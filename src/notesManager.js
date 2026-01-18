@@ -15,3 +15,16 @@ export const createNote = (title, content) => {
     fs.writeFileSync(filePath, content, 'utf-8');
     console.log(`Note "${title}" created successfully.`);
 }
+
+//read a note
+export const readNote = (title) => {
+    const filePath = path.join(notesDir, `${title}.txt`)
+
+    if(!fs.existsSync(filePath)){
+        console.log(`Note "${title}" does not exist.`);
+        return;
+    }   
+
+    const data = fs.readFileSync(filePath, 'utf-8');
+    console.log(data);
+}
