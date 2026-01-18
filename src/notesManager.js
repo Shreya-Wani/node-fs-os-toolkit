@@ -54,3 +54,16 @@ export const deleteNote = (title) => {
     fs.unlinkSync(filePath);
     console.log(`Note "${title}" deleted successfully.`);
 }
+
+//list all notes
+export const listNotes = () => {
+    const files = fs.readDirSync(notesDir);
+    
+    if(files.length === 0){
+        console.log("No notes found.");
+        return;
+    }
+
+    console.log("Notes:");
+    files.forEach(file => console.log(file));
+}
