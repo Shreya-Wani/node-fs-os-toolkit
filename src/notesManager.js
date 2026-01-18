@@ -57,8 +57,8 @@ export const deleteNote = (title) => {
 
 //list all notes
 export const listNotes = () => {
-    const files = fs.readDirSync(notesDir);
-    
+    const files = fs.readdirSync(notesDir);
+
     if(files.length === 0){
         console.log("No notes found.");
         return;
