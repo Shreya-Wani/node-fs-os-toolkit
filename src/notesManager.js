@@ -28,3 +28,16 @@ export const readNote = (title) => {
     const data = fs.readFileSync(filePath, 'utf-8');
     console.log(data);
 }
+
+//update a note
+export const updateNote = (title, content) => {
+    const filePath = path.join(notesDir, `${title}.txt`);
+
+    if(!fs.existsSync(filePath)){
+        console.log(`Note "${title}" does not exist.`);
+        return;
+    }
+
+    fs.writeFileSync(filePath, content, 'utf-8');
+    console.log(`Note "${title}" updated successfully.`);
+}
