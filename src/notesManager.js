@@ -41,3 +41,16 @@ export const updateNote = (title, content) => {
     fs.writeFileSync(filePath, content, 'utf-8');
     console.log(`Note "${title}" updated successfully.`);
 }
+
+//delete a note
+export const deleteNote = (title) => {
+    const filePath = path.join(notesDir, `${title}.txt`);
+
+    if(!fs.existsSync(filePath)){
+        console.log(`Note "${title}" does not exist.`);
+        return;
+    }
+
+    fs.unlinkSync(filePath);
+    console.log(`Note "${title}" deleted successfully.`);
+}
