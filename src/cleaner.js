@@ -22,5 +22,15 @@ export const cleanDirectory = (dirPath, days) => {
         // Calculate file age in days
         const ageInDays =
             (now - stats.mtimeMs) / (1000 * 60 * 60 * 24);
-    })
-}
+
+        // Delete only old files
+        if (ageInDays > days && stats.isFile()) {
+            fs.unlinkSync(filePath);
+
+            const log = `${file} deleted on ${new Date().toLocaleString()}\n`;
+            fs.appendFileSync(logFile, log);
+        }
+    });
+
+    console.log("Directory cleaned successfully");
+};
