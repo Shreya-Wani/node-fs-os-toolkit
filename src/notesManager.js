@@ -1,7 +1,7 @@
 //Task1: Folder-Based Notes Manager
 
-const fs = required('fs');
-const path = required('path');
+import fs from "fs";
+import path from "path";
 
 // create notes folder if it doesn't exist
 const notesDir = path.join(Process.cwd(), "notes");
