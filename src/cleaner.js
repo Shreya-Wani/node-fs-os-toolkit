@@ -12,4 +12,15 @@ export const cleanDirectory = (dirPath, days) => {
     //create log file path in user's home directory
     const logFile = path.join(os.homedir(), "deleted_files.log");
 
+    // Loop through each file in the directory
+    files.forEach((file) => {
+        const filePath = path.join(dirPath, file);
+
+        // Get file information
+        const stats = fs.statSync(filePath);
+
+        // Calculate file age in days
+        const ageInDays =
+            (now - stats.mtimeMs) / (1000 * 60 * 60 * 24);
+    })
 }
