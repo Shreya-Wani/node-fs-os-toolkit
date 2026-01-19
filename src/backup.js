@@ -36,5 +36,12 @@ export const backupFolder = (sourceDir) => {
         totalFiles: copiedCount
     };
 
-    
+    //save metadata.json in backup folder
+    fs.writeFileSync(
+        path.join(backupDir, "metadata.json"),
+        JSON.stringify(metadata, null, 2)
+    );
+
+    console.log("backup completed successfully");
+
 }
