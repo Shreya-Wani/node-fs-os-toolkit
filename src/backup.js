@@ -10,7 +10,7 @@ export const backupFolder = (sourceDir) => {
     const backupDir = path.join(process.cwd(), `backup_${timestamp}`);
     fs.mkdirSync(backupDir);
 
-    //read all files from source directory
+    //read all files from source floder
     const files = fs.readFileSync(sourceDir);
 
     let copiedCount = 0;
@@ -26,4 +26,15 @@ export const backupFolder = (sourceDir) => {
             copiedCount++;
         }
     });
+
+
+    //create a metadata information
+    const metadata = {
+        osType: os.type(),
+        username: os.userInfo().username,
+        backupDate: new Date().toISOString(),
+        totalFiles: copiedCount
+    };
+
+    
 }
