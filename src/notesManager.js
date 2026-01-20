@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 // create notes folder if it doesn't exist
-const notesDir = path.join(Process.cwd(), "notes");
+const notesDir = path.join(process.cwd(), "notes");
 if (!fs.existsSync(notesDir)){
     fs.mkdirSync(notesDir);
 }
